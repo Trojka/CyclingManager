@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{5DB1CBD7-7887-4D2D-A733-99F4C69E4965}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CyclingManager</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>CyclingManager</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>i386</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>i386</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-02.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-02.imageset\Tutorial-02.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-03.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-03.imageset\Tutorial-03.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-04.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-04.imageset\Tutorial-04.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-05.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-05.imageset\Tutorial-05.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-06.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-06.imageset\Tutorial-06.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-07.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-07.imageset\Tutorial-07.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-08.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-08.imageset\Tutorial-08.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-09.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-09.imageset\Tutorial-09.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-10.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-10.imageset\Tutorial-01.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-11.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-11.imageset\Tutorial-11.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-12.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-12.imageset\Tutorial-12.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-13.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-13.imageset\Tutorial-13.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-14.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-14.imageset\Tutorial-14.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-15.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-15.imageset\Tutorial-15.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-16.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-16.imageset\Tutorial-16.jpg" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-01.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Inspirations.xcassets\Inspiration-01.imageset\Tutorial-10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Extensions\UIImageExtensions.cs" />
+    <Compile Include="Controllers\TeamDetailViewController.cs" />
+    <Compile Include="Controllers\TeamDetailViewController.designer.cs">
+      <DependentUpon>TeamDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InspirationCell.cs" />
+    <Compile Include="Views\InspirationCell.designer.cs">
+      <DependentUpon>InspirationCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CyclerTableCell.cs" />
+    <Compile Include="Views\CyclerTableCell.designer.cs">
+      <DependentUpon>CyclerTableCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CompetitionListViewController.cs" />
+    <Compile Include="Views\CompetitionOverviewCell.cs" />
+    <Compile Include="Layouts\CompetitionLayout.cs" />
+    <Compile Include="Common\ColorExtensions.cs" />
+    <Compile Include="Controllers\TeamListViewController.cs" />
+    <Compile Include="Views\TeamOverviewCell.cs" />
+    <Compile Include="Layouts\ExpandingItemLayout.cs" />
+    <Compile Include="Layouts\TeamLayout.cs" />
+    <Compile Include="Controllers\TeamListViewController.designer.cs">
+      <DependentUpon>TeamListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\CompetitionLayout.designer.cs">
+      <DependentUpon>CompetitionLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamOverviewCell.designer.cs">
+      <DependentUpon>TeamOverviewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScoreView.cs" />
+    <Compile Include="Controllers\CompetitionListViewController.designer.cs">
+      <DependentUpon>CompetitionListViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Layouts\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Resources\Inspirations.xcassets\" />
+    <Folder Include="Views\" />
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Inspirations.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CyclingManager.Shared\CyclingManager.Shared.csproj">
+      <Project>{747C6A49-E72B-4D8A-A261-B28E3B9CD2EA}</Project>
+      <Name>CyclingManager.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

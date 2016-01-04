@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="remove">Verwijderen</string>
+	<string name="add">Toevoegen</string>
+	<string name="app_name">MegaVelo.Android</string>
+</resources>

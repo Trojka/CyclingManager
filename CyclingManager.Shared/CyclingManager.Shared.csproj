@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{747C6A49-E72B-4D8A-A261-B28E3B9CD2EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CyclingManager.Shared</RootNamespace>
+    <AssemblyName>CyclingManager.Shared</AssemblyName>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainModel\Team.cs" />
+    <Compile Include="DomainModel\Cycler.cs" />
+    <Compile Include="DataProvider\DataSource.cs" />
+    <Compile Include="DomainModel\Competition.cs" />
+    <Compile Include="Common\Color.cs" />
+    <Compile Include="DomainModel\CompetitionResult.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="DomainModel\" />
+    <Folder Include="DataProvider\" />
+    <Folder Include="Common\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\etixxquickstep.png" />
+    <EmbeddedResource Include="Resources\europcar.png" />
+    <EmbeddedResource Include="Resources\katusha.png" />
+    <EmbeddedResource Include="Resources\lottosoudal.png" />
+    <EmbeddedResource Include="Resources\skyprocycling.png" />
+    <EmbeddedResource Include="Resources\treckfactoryracing.png" />
+  </ItemGroup>
+</Project>
