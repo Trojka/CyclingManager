@@ -12,7 +12,13 @@ namespace CyclingManager
 	partial class TeamDetailViewController
 	{
 		[Outlet]
+		UIKit.UIButton FollowButton { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint HeaderHeightConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UIButton RankingButton { get; set; }
 
 		[Outlet]
 		UIKit.UITableView TeamCyclersTable { get; set; }
@@ -43,6 +49,16 @@ namespace CyclingManager
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (RankingButton != null) {
+				RankingButton.Dispose ();
+				RankingButton = null;
+			}
+
+			if (FollowButton != null) {
+				FollowButton.Dispose ();
+				FollowButton = null;
+			}
+
 			if (HeaderHeightConstraint != null) {
 				HeaderHeightConstraint.Dispose ();
 				HeaderHeightConstraint = null;

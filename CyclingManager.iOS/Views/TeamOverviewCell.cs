@@ -11,6 +11,10 @@ namespace CyclingManager
 		{
 		}
 
+		public UIImageView TeamImageHolder {
+			get { return teamImageView; }
+		}
+
 		public UIImage TeamImage {
 			get { return teamImageView.Image; }
 			set { teamImageView.Image = value; }

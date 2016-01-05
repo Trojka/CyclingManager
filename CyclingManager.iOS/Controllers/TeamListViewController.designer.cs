@@ -13,6 +13,9 @@ namespace CyclingManager
 	{
 		[Outlet]
 		UIKit.UICollectionView teamCollectionView { get; set; }
+
+		[Action ("TeamListSortation:")]
+		partial void TeamListSortation (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

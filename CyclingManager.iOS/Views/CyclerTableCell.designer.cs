@@ -15,10 +15,10 @@ namespace CyclingManager
 		UIKit.NSLayoutConstraint bottomConstraint { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint leadingConstraint { get; set; }
+		UIKit.UILabel CyclerNameLabel { get; set; }
 
 		[Outlet]
-		UIKit.UILabel TeamNameLabel { get; set; }
+		UIKit.NSLayoutConstraint leadingConstraint { get; set; }
 
 		[Outlet]
 		UIKit.NSLayoutConstraint topConstraint { get; set; }
@@ -38,6 +38,11 @@ namespace CyclingManager
 				leadingConstraint = null;
 			}
 
+			if (CyclerNameLabel != null) {
+				CyclerNameLabel.Dispose ();
+				CyclerNameLabel = null;
+			}
+
 			if (topConstraint != null) {
 				topConstraint.Dispose ();
 				topConstraint = null;
@@ -46,11 +51,6 @@ namespace CyclingManager
 			if (trailingConstraint != null) {
 				trailingConstraint.Dispose ();
 				trailingConstraint = null;
-			}
-
-			if (TeamNameLabel != null) {
-				TeamNameLabel.Dispose ();
-				TeamNameLabel = null;
 			}
 		}
 	}

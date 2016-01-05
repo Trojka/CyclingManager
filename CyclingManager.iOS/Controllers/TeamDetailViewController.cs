@@ -185,7 +185,7 @@ namespace CyclingManager
 		public UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			var cell = tableView.DequeueReusableCell("CyclerCell") as CyclerTableCell;
-			cell.TeamName = team [(int)indexPath.Item].Name;
+			cell.CyclerName = team [(int)indexPath.Item].Name;
 
 			if(team[(int)indexPath.Item].Origin == TeamOrigin.Common)
 			{
@@ -255,6 +255,14 @@ namespace CyclingManager
 			TeamImageView.Image = TeamImage;
 
 			this.View.LayoutIfNeeded();
+
+			RankingButton.Layer.CornerRadius = RankingButton.Frame.Height/2;
+			RankingButton.Layer.BorderWidth = 1;
+			RankingButton.Layer.BorderColor = RankingButton.TitleColor(UIControlState.Normal).CGColor;
+
+			FollowButton.Layer.CornerRadius = FollowButton.Frame.Height/2;
+			FollowButton.Layer.BorderWidth = 1;
+			FollowButton.Layer.BorderColor = FollowButton.TitleColor(UIControlState.Normal).CGColor;
 
 			TeamCyclersTable.WeakDelegate = this;
 			TeamCyclersTable.WeakDataSource = this;

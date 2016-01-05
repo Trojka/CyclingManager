@@ -8,9 +8,6 @@ namespace CyclingManager
 {
 	public class ExpandingItemLayout : UICollectionViewLayout
 	{
-//		public static readonly nfloat StandardHeight = 100;
-//		public static readonly nfloat FeaturedHeight = 200;
-
 		List<UICollectionViewLayoutAttributes> cache = new List<UICollectionViewLayoutAttributes> ();
 
 		public ExpandingItemLayout (IntPtr handle) : base (handle)

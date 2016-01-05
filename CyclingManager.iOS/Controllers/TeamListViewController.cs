@@ -11,16 +11,38 @@ namespace CyclingManager
 	[Register ("TeamListViewController")]
 	public partial class TeamListViewController : UIViewController
 	{
+
 		List<Team> teams = DataSource.Teams();
+		List<Team> sortedTeams;
 
 		public TeamListViewController  (IntPtr handle) : base (handle)
 		{
 		}
 
+		partial void TeamListSortation (NSObject sender)
+		{
+			if(!(sender is UISegmentedControl))
+				return;
+
+			var sortationSelector = sender as UISegmentedControl;
+
+			if(sortationSelector.SelectedSegment == 0)
+			{
+				sortedTeams = teams.OrderBy(t => t.Name).ToList();
+			}
+
+			if(sortationSelector.SelectedSegment == 1)
+			{
+				sortedTeams = teams.OrderByDescending(t => t.Score).ToList();
+			}
+
+			teamCollectionView.ReloadData();
+		}
+
 		[Export("collectionView:numberOfItemsInSection:")]
 		public nint GetItemsCount (UICollectionView collectionView, nint section)
 		{
-			return teams.Count;
+			return sortedTeams.Count;
 		}
 
 		[Export ("collectionView:cellForItemAtIndexPath:")]
@@ -28,11 +50,14 @@ namespace CyclingManager
 		{
 			var cell = collectionView.DequeueReusableCell("TeamOverviewCell", indexPath) as TeamOverviewCell;
 
-			NSData data = NSData.FromArray (teams[(int)indexPath.Item].ImageData);
+			cell.TeamImageHolder.Layer.CornerRadius = 35;
+			cell.TeamImageHolder.ClipsToBounds = true;
+
+			NSData data = NSData.FromArray (sortedTeams[(int)indexPath.Item].ImageData);
 			cell.TeamImage = UIImage.LoadFromData (data, 1);
 
-			cell.TeamName = teams [(int)indexPath.Item].Name;
-			cell.TeamScore = teams [(int)indexPath.Item].Score + " punten";
+			cell.TeamName = sortedTeams [(int)indexPath.Item].Name;
+			cell.TeamScore = sortedTeams [(int)indexPath.Item].Score + " punten";
 
 			return cell;
 		}
@@ -45,7 +70,7 @@ namespace CyclingManager
 				if (selectedIndexPath == null)
 					return;
 				
-				NSData data = NSData.FromArray (teams[(int)selectedIndexPath.Item].ImageData);
+				NSData data = NSData.FromArray (sortedTeams[(int)selectedIndexPath.Item].ImageData);
 				targetController.TeamImage = UIImage.LoadFromData (data, 1);
 			}
 		}
@@ -55,6 +80,8 @@ namespace CyclingManager
 			base.ViewDidLoad ();
 
 			// Perform any additional setup after loading the view, typically from a nib.
+
+			sortedTeams = teams.OrderBy (t => t.Name).ToList();
 
 			this.NavigationController.NavigationBar.Translucent = true;
 			this.NavigationController.NavigationBar.SetBackgroundImage (new UIImage (), UIBarMetrics.Default);

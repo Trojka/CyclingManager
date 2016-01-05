@@ -11,9 +11,9 @@ namespace CyclingManager
 		{
 		}
 
-		public string TeamName {
-			get { return TeamNameLabel.Text; }
-			set { TeamNameLabel.Text = value; }
+		public string CyclerName {
+			get { return CyclerNameLabel.Text; }
+			set { CyclerNameLabel.Text = value; }
 		}
 
 		public void SetVisualsToUndetermined() {
