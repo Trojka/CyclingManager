@@ -5,6 +5,7 @@ using CoreGraphics;
 using System.Collections.Generic;
 using System.Linq;
 using CyclingManager.Shared.DomainModel;
+using CoreAnimation;
 
 namespace CyclingManager
 {
@@ -30,6 +31,11 @@ namespace CyclingManager
 		}
 
 		public UIImage TeamImage {
+			get;
+			set;
+		}
+
+		public Team Team {
 			get;
 			set;
 		}
@@ -252,9 +258,17 @@ namespace CyclingManager
 			TeamCyclersTable.ContentOffset = new CGPoint (0, -(HeaderHeight + TeamOwnerHolderHeight));
 			TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
 
-			TeamImageView.Image = TeamImage;
-
 			this.View.LayoutIfNeeded();
+
+			TeamImageView.Image = TeamImage;
+			OwnerNameLabel.Text = Team.OwnerName;
+
+			CAGradientLayer transparencyLayer = new CAGradientLayer ();
+			transparencyLayer.Frame = TeamImageView.Frame;
+			transparencyLayer.Colors = new CGColor[] { UIColor.Black.CGColor, UIColor.Clear.CGColor }; //[NSArray arrayWithObjects:(id)[UIColor whiteColor].CGColor, (id)[UIColor clearColor].CGColor, nil];
+			transparencyLayer.StartPoint = new CGPoint(1.0f, 2.0f);
+			transparencyLayer.EndPoint = new CGPoint(1.0f, -1.0f);
+			TeamImageView.Layer.AddSublayer (transparencyLayer);
 
 			RankingButton.Layer.CornerRadius = RankingButton.Frame.Height/2;
 			RankingButton.Layer.BorderWidth = 1;

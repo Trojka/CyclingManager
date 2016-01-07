@@ -52,5 +52,7 @@
     <EmbeddedResource Include="Resources\lottosoudal.png" />
     <EmbeddedResource Include="Resources\skyprocycling.png" />
     <EmbeddedResource Include="Resources\treckfactoryracing.png" />
+    <EmbeddedResource Include="Resources\user82.png" />
+    <EmbeddedResource Include="Resources\bicycles4.png" />
   </ItemGroup>
 </Project>

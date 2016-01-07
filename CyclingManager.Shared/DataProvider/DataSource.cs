@@ -40,12 +40,12 @@ namespace CyclingManager.Shared
 		}
 
 		static List<Team> teamList = new Team[] {
-			new Team (){ Id = 0, Name = "QuickStep", Score = 2000, Results = GetTeamResults(0), TeamColor = Color.FromRGB(85, 0, 255), ImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
-			new Team (){ Id = 1, Name = "Lotto Soudal", Score = 1000, TeamColor = Color.FromRGB(170, 0, 170), ImageData = GetResource("CyclingManager.Shared.Resources.lottosoudal.png")},
-			new Team (){ Id = 2, Name = "Team Sky", Score = 500, TeamColor = Color.FromRGB(85, 170, 85), ImageData = GetResource("CyclingManager.Shared.Resources.skyprocycling.png")},
-			new Team (){ Id = 3, Name = "Europcar", Score = 250, TeamColor = Color.FromRGB(0, 85, 0), ImageData = GetResource("CyclingManager.Shared.Resources.europcar.png")},
-			new Team (){ Id = 4, Name = "Katusha", Score = 125, TeamColor = Color.FromRGB(255, 170, 0), ImageData = GetResource("CyclingManager.Shared.Resources.katusha.png")},
-			new Team (){ Id = 5, Name = "Trek Factory Racing", Score = 62, TeamColor = Color.FromRGB(255, 255, 0), ImageData = GetResource("CyclingManager.Shared.Resources.treckfactoryracing.png")}
+			new Team (){ Id = 0, Name = "QuickStep", OwnerName = "Meneer Laminaat", Score = 2000, Results = GetTeamResults(0), TeamColor = Color.FromRGB(85, 0, 255), ImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
+			new Team (){ Id = 1, Name = "Lotto Soudal", OwnerName = "The Gambler", Score = 1000, TeamColor = Color.FromRGB(170, 0, 170), ImageData = GetResource("CyclingManager.Shared.Resources.lottosoudal.png")},
+			new Team (){ Id = 2, Name = "Team Sky", OwnerName = "Froomey", Score = 500, TeamColor = Color.FromRGB(85, 170, 85), ImageData = GetResource("CyclingManager.Shared.Resources.skyprocycling.png")},
+			new Team (){ Id = 3, Name = "Europcar", OwnerName = "Jacky Ickx", Score = 250, TeamColor = Color.FromRGB(0, 85, 0), ImageData = GetResource("CyclingManager.Shared.Resources.europcar.png")},
+			new Team (){ Id = 4, Name = "Katusha", OwnerName = "Vladimir Poetin", Score = 125, TeamColor = Color.FromRGB(255, 170, 0), ImageData = GetResource("CyclingManager.Shared.Resources.katusha.png")},
+			new Team (){ Id = 5, Name = "Trek Factory Racing", OwnerName = "Tja, wie eigenljk?", Score = 62, TeamColor = Color.FromRGB(255, 255, 0), ImageData = GetResource("CyclingManager.Shared.Resources.treckfactoryracing.png")}
 		}.ToList();
 
 		public static List<Team> Teams()

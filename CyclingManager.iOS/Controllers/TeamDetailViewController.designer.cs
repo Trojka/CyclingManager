@@ -18,6 +18,12 @@ namespace CyclingManager
 		UIKit.NSLayoutConstraint HeaderHeightConstraint { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView OwnerImageView { get; set; }
+
+		[Outlet]
+		UIKit.UILabel OwnerNameLabel { get; set; }
+
+		[Outlet]
 		UIKit.UIButton RankingButton { get; set; }
 
 		[Outlet]
@@ -49,11 +55,6 @@ namespace CyclingManager
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (RankingButton != null) {
-				RankingButton.Dispose ();
-				RankingButton = null;
-			}
-
 			if (FollowButton != null) {
 				FollowButton.Dispose ();
 				FollowButton = null;
@@ -62,6 +63,11 @@ namespace CyclingManager
 			if (HeaderHeightConstraint != null) {
 				HeaderHeightConstraint.Dispose ();
 				HeaderHeightConstraint = null;
+			}
+
+			if (RankingButton != null) {
+				RankingButton.Dispose ();
+				RankingButton = null;
 			}
 
 			if (TeamCyclersTable != null) {
@@ -97,6 +103,16 @@ namespace CyclingManager
 			if (TeamRankingGraphHolderHeightConstraint != null) {
 				TeamRankingGraphHolderHeightConstraint.Dispose ();
 				TeamRankingGraphHolderHeightConstraint = null;
+			}
+
+			if (OwnerImageView != null) {
+				OwnerImageView.Dispose ();
+				OwnerImageView = null;
+			}
+
+			if (OwnerNameLabel != null) {
+				OwnerNameLabel.Dispose ();
+				OwnerNameLabel = null;
 			}
 		}
 	}

@@ -72,6 +72,8 @@ namespace CyclingManager
 				
 				NSData data = NSData.FromArray (sortedTeams[(int)selectedIndexPath.Item].ImageData);
 				targetController.TeamImage = UIImage.LoadFromData (data, 1);
+
+				targetController.Team = sortedTeams [(int)selectedIndexPath.Item];
 			}
 		}
 

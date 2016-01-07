@@ -8,6 +8,7 @@ namespace CyclingManager.Shared.DomainModel
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
+		public string OwnerName { get; set;}
 		public Color TeamColor { get; set; }
 		public List<Cycler> Cyclists { get; set; }
 		public List<CompetitionResult> Results { get; set; }

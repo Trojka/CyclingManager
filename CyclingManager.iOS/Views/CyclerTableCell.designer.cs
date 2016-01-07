@@ -18,6 +18,9 @@ namespace CyclingManager
 		UIKit.UILabel CyclerNameLabel { get; set; }
 
 		[Outlet]
+		UIKit.UILabel CyclerScoreLabel { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint leadingConstraint { get; set; }
 
 		[Outlet]
@@ -33,14 +36,14 @@ namespace CyclingManager
 				bottomConstraint = null;
 			}
 
-			if (leadingConstraint != null) {
-				leadingConstraint.Dispose ();
-				leadingConstraint = null;
-			}
-
 			if (CyclerNameLabel != null) {
 				CyclerNameLabel.Dispose ();
 				CyclerNameLabel = null;
+			}
+
+			if (leadingConstraint != null) {
+				leadingConstraint.Dispose ();
+				leadingConstraint = null;
 			}
 
 			if (topConstraint != null) {
@@ -51,6 +54,11 @@ namespace CyclingManager
 			if (trailingConstraint != null) {
 				trailingConstraint.Dispose ();
 				trailingConstraint = null;
+			}
+
+			if (CyclerScoreLabel != null) {
+				CyclerScoreLabel.Dispose ();
+				CyclerScoreLabel = null;
 			}
 		}
 	}
