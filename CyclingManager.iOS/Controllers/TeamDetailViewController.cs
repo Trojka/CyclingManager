@@ -25,7 +25,7 @@ namespace CyclingManager
 
 		bool RankingDetailIsOpen { get; set;} = false;
 
-		List<Cycler> team = Cycler.Team1();
+		//List<Cycler> team = Cycler.Team1();
 
 		bool m_isInModeCompare = false;
 
@@ -34,6 +34,16 @@ namespace CyclingManager
 		}
 
 		public Team Team {
+			get;
+			set;
+		}
+
+		private List<Cycler> Cyclers {
+			get;
+			set;
+		}
+
+		private List<CompetitionResult> Results {
 			get;
 			set;
 		}
@@ -61,7 +71,7 @@ namespace CyclingManager
 
 			var newContentOffset = new CGPoint(0, TeamCyclersTable.ContentOffset.Y - HeaderCollapseDelta);
 
-			UIView.Animate(ExpandCollapseAnimationDuration, () => {
+			UIView.Animate (ExpandCollapseAnimationDuration, () => {
 				TeamCyclersTable.ContentInset = new UIEdgeInsets (HeaderHeightCollapsed + TeamRankingGraphHolderHeight, 0, 0, 0);
 				TeamCyclersTable.ContentOffset = newContentOffset;
 				TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeightCollapsed + TeamRankingGraphHolderHeight, 0, 0, 0);
@@ -69,16 +79,16 @@ namespace CyclingManager
 				OwnerNameLabel.Alpha = 0;
 				OwnerImageView.Alpha = 0;
 
-				this.View.LayoutIfNeeded();
+				this.View.LayoutIfNeeded ();
 			},
-			() => {
-				scoreView = new ScoreView();
-				scoreView.Frame = new CGRect(new CGPoint(0,0), TeamRankingGraphHolder.Frame.Size);
-				TeamRankingGraphHolder.AddSubview(scoreView);
+				() => {
+					scoreView = new ScoreView (Results);
+					scoreView.Frame = new CGRect (new CGPoint (0, 0), TeamRankingGraphHolder.Frame.Size);
+					TeamRankingGraphHolder.AddSubview (scoreView);
 
-				scoreView.Configure();
-				scoreView.ShowData();
-			});
+					scoreView.Configure ();
+					scoreView.ShowData ();
+				});
 		}
 
 		void CloseRankingDetail ()
@@ -93,7 +103,7 @@ namespace CyclingManager
 
 			var newContentOffset = new CGPoint(0, TeamCyclersTable.ContentOffset.Y + HeaderCollapseDelta);
 
-			UIView.Animate(ExpandCollapseAnimationDuration, () => {
+			UIView.Animate (ExpandCollapseAnimationDuration, () => {
 				TeamCyclersTable.ContentInset = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
 				TeamCyclersTable.ContentOffset = newContentOffset;
 				TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
@@ -101,12 +111,12 @@ namespace CyclingManager
 				OwnerNameLabel.Alpha = 1;
 				OwnerImageView.Alpha = 1;
 
-				this.View.LayoutIfNeeded();
+				this.View.LayoutIfNeeded ();
 			},
-			() => {
-				scoreView.RemoveFromSuperview();
-				scoreView = null;
-			});
+				() => {
+					scoreView.RemoveFromSuperview ();
+					scoreView = null;
+				});
 		}
 
 		partial void CompareTeam (Foundation.NSObject sender)
@@ -117,7 +127,7 @@ namespace CyclingManager
 				foreach(var indexPath in TeamCyclersTable.IndexPathsForVisibleRows)
 				{
 					var cell = TeamCyclersTable.CellAt(indexPath) as CyclerTableCell;
-					if(team[(int)indexPath.Item].Origin == TeamOrigin.Mine)
+					if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Mine)
 					{
 						cell.SetVisualsToOutsideRight (TeamCyclersTable.Bounds.Width);
 					}
@@ -127,17 +137,17 @@ namespace CyclingManager
 					}
 				}
 
-				var mine = team.Where(c => c.Origin == TeamOrigin.Mine).ToList();
+				var mine = Cyclers.Where(c => c.Origin == TeamOrigin.Mine).ToList();
 				var removeIndexPaths = new List<NSIndexPath>();
 				foreach(var c in mine)
 				{
-					int index = team.FindIndex(tm => tm.Id == c.Id);
-					team.Remove(c);
+					int index = Cyclers.FindIndex(tm => tm.Id == c.Id);
+					Cyclers.Remove(c);
 					removeIndexPaths.Add(NSIndexPath.FromItemSection(index, 0));
 
 				}
 
-				team.ForEach(t => t.Origin = TeamOrigin.Undetermined);
+				Cyclers.ForEach(t => t.Origin = TeamOrigin.Undetermined);
 
 
 				UIView.Animate(1, () => {
@@ -152,21 +162,21 @@ namespace CyclingManager
 				m_isInModeCompare = true;
 
 				var myTeam = Cycler.MyTeam();
-				team.ForEach(t => t.Origin = TeamOrigin.Theirs);
-				team.Where(t => myTeam.Any(mt => mt.Id == t.Id)).ToList().ForEach(t => t.Origin = TeamOrigin.Common);
+				Cyclers.ForEach(t => t.Origin = TeamOrigin.Theirs);
+				Cyclers.Where(t => myTeam.Any(mt => mt.Id == t.Id)).ToList().ForEach(t => t.Origin = TeamOrigin.Common);
 
 				foreach(var indexPath in TeamCyclersTable.IndexPathsForVisibleRows)
 				{
 					var cell = TeamCyclersTable.CellAt(indexPath) as CyclerTableCell;
-					if(team[(int)indexPath.Item].Origin == TeamOrigin.Common)
+					if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Common)
 					{
 						cell.SetVisualsToCommon();
 					}
-					else if(team[(int)indexPath.Item].Origin == TeamOrigin.Theirs)
+					else if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Theirs)
 					{
 						cell.SetVisualsToTheirs();
 					}
-					else if(team[(int)indexPath.Item].Origin == TeamOrigin.Undetermined)
+					else if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Undetermined)
 					{
 						cell.SetVisualsToUndetermined();
 					}
@@ -176,12 +186,12 @@ namespace CyclingManager
 					this.View.LayoutIfNeeded();
 				});
 
-				var myUniqueCyclers = myTeam.Where(mt => !team.Any(t => t.Id == mt.Id)).ToList();
+				var myUniqueCyclers = myTeam.Where(mt => !Cyclers.Any(t => t.Id == mt.Id)).ToList();
 				var addIndexPaths = new List<NSIndexPath>();
 				foreach(var cycler in myUniqueCyclers) {
 					cycler.Origin = TeamOrigin.Mine;
-					int theirsRankedHeigherCount = team.Where(t => t.Id < cycler.Id).Count();
-					team.Insert(theirsRankedHeigherCount, cycler);
+					int theirsRankedHeigherCount = Cyclers.Where(t => t.Id < cycler.Id).Count();
+					Cyclers.Insert(theirsRankedHeigherCount, cycler);
 					addIndexPaths.Add(NSIndexPath.FromItemSection(theirsRankedHeigherCount, 0));
 				}
 
@@ -195,24 +205,24 @@ namespace CyclingManager
 		public UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 			var cell = tableView.DequeueReusableCell("CyclerCell") as CyclerTableCell;
-			cell.CyclerName = team [(int)indexPath.Item].Name;
-			cell.CyclerScore = string.Format("Score: {0}", team [(int)indexPath.Item].Score);
-			NSData flagImageData = NSData.FromArray (DataSource.GetResource(team [(int)indexPath.Item].CountryFlagUrl));
+			cell.CyclerName = Cyclers [(int)indexPath.Item].Name;
+			cell.CyclerScore = string.Format("Score: {0}", Cyclers [(int)indexPath.Item].Score);
+			NSData flagImageData = NSData.FromArray (DataSource.GetResource(Cyclers [(int)indexPath.Item].CountryFlagUrl));
 			cell.CountryFlagImage = UIImage.LoadFromData (flagImageData, 1);
 
-			if(team[(int)indexPath.Item].Origin == TeamOrigin.Common)
+			if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Common)
 			{
 				cell.SetVisualsToCommon();
 			}
-			else if(team[(int)indexPath.Item].Origin == TeamOrigin.Theirs)
+			else if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Theirs)
 			{
 				cell.SetVisualsToTheirs();
 			}
-			else if(team[(int)indexPath.Item].Origin == TeamOrigin.Mine)
+			else if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Mine)
 			{
 				cell.SetVisualsToMine();
 			}
-			else if(team[(int)indexPath.Item].Origin == TeamOrigin.Undetermined)
+			else if(Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Undetermined)
 			{
 				cell.SetVisualsToUndetermined();
 			}
@@ -223,13 +233,13 @@ namespace CyclingManager
 		[Export("tableView:numberOfRowsInSection:")]
 		public nint RowsInSection (UITableView tableView, nint section)
 		{
-			return team.Count;
+			return Cyclers.Count;
 		}
 
 		[Export("tableView:willDisplayCell:forRowAtIndexPath:")]
 		public void WillDisplayCell (UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
 		{
-			if (m_isInModeCompare && team[(int)indexPath.Item].Origin == TeamOrigin.Mine) {
+			if (m_isInModeCompare && Cyclers[(int)indexPath.Item].Origin == TeamOrigin.Mine) {
 
 				(cell as CyclerTableCell).SetVisualsToOutsideRight (TeamCyclersTable.Bounds.Width);
 				cell.LayoutIfNeeded();
@@ -267,6 +277,8 @@ namespace CyclingManager
 
 			this.View.LayoutIfNeeded();
 
+			Cyclers = DataSource.GetTeamCyclers (Team.Id);
+			Results = DataSource.GetTeamResults (Team.Id);
 
 			NSData teamImageData = NSData.FromArray(this.Team.TeamImageData);
 			TeamImageView.Image = UIImage.LoadFromData (teamImageData, 1);

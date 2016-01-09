@@ -443,9 +443,31 @@
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JI7-ii-Xya">
                                 <rect key="frame" x="0.0" y="235" width="600" height="45"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9a-G9-VOl">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="16"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Competition Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJE-vX-oT1">
+                                        <rect key="frame" x="0.0" y="24" width="600" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="vTQ-ja-HUa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="X9a-G9-VOl" firstAttribute="leading" secondItem="JI7-ii-Xya" secondAttribute="leading" id="03M-iM-FST"/>
                                     <constraint firstAttribute="height" constant="100" id="Agn-wu-YFb"/>
+                                    <constraint firstItem="VJE-vX-oT1" firstAttribute="top" secondItem="X9a-G9-VOl" secondAttribute="bottom" id="Cyr-6o-XXh"/>
+                                    <constraint firstItem="VJE-vX-oT1" firstAttribute="leading" secondItem="JI7-ii-Xya" secondAttribute="leading" id="PRK-8a-dSK"/>
+                                    <constraint firstAttribute="trailing" secondItem="X9a-G9-VOl" secondAttribute="trailing" id="QH1-qb-jkT"/>
+                                    <constraint firstItem="X9a-G9-VOl" firstAttribute="top" secondItem="JI7-ii-Xya" secondAttribute="top" id="gix-Lr-3EP"/>
+                                    <constraint firstAttribute="trailing" secondItem="VJE-vX-oT1" secondAttribute="trailing" id="jRM-L5-Zhw"/>
+                                    <constraint firstAttribute="bottom" secondItem="VJE-vX-oT1" secondAttribute="bottom" id="ufv-13-4BL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -478,7 +500,8 @@
                         <outlet property="TeamImageView" destination="DLI-Gw-17D" id="xYp-6p-rLr"/>
                         <outlet property="TeamOwnerDetailHolder" destination="bsV-Su-tBa" id="wwU-IY-SLZ"/>
                         <outlet property="TeamOwnerHolderHeightConstraint" destination="VUX-aU-Bdz" id="bzU-t9-eHe"/>
-                        <outlet property="TeamRankingGraphHolder" destination="JI7-ii-Xya" id="QV0-SY-3gK"/>
+                        <outlet property="TeamRankingGraphCurrentCompetitionNameLabel" destination="VJE-vX-oT1" id="GeT-qX-fIC"/>
+                        <outlet property="TeamRankingGraphHolder" destination="X9a-G9-VOl" id="liO-dX-gOX"/>
                         <outlet property="TeamRankingGraphHolderHeightConstraint" destination="Agn-wu-YFb" id="8mA-AF-ANw"/>
                     </connections>
                 </viewController>

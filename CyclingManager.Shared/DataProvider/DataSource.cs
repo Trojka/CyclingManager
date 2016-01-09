@@ -68,12 +68,23 @@ namespace CyclingManager.Shared
 			return buffer;
 		}
 
+		public static List<Cycler> GetTeamCyclers(int teamId) {
+
+			var team1 = new List<Cycler> ();
+
+			for (int i = 0; i < 20; i = i+2) {
+				team1.Add (new Cycler (){ Id = i, Name = "Renner " + i, Score = i*100, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" });
+			}
+
+			return team1;
+		}
+
 		public static List<CompetitionResult> GetTeamResults(int teamId)
 		{
 			List<CompetitionResult> results = new CompetitionResult[]{
-				new CompetitionResult(){ Name = "Omloop Het Nieuwblad", Score = 100 },
-				new CompetitionResult(){ Name = "Gent-Wevelgem", Score = 130 },
-				new CompetitionResult(){ Name = "Ronde van Vlaanderen", Score = 150 }
+				new CompetitionResult(){ Name = "Omloop Het Nieuwblad", ExecutionDate = new DateTime(2016, 1, 1), Score = 10 },
+				new CompetitionResult(){ Name = "Gent-Wevelgem", ExecutionDate = new DateTime(2016, 1, 2), Score = 13 },
+				new CompetitionResult(){ Name = "Ronde van Vlaanderen", ExecutionDate = new DateTime(2016, 1, 3), Score = 15 }
 			}.ToList();
 
 			return results;

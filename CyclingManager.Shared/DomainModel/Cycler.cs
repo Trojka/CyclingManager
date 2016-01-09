@@ -21,17 +21,6 @@ namespace CyclingManager.Shared.DomainModel
 
 		public TeamOrigin Origin { get; set; } = TeamOrigin.Undetermined;
 
-		public static List<Cycler> Team1() {
-
-			var team1 = new List<Cycler> ();
-
-			for (int i = 0; i < 20; i = i+2) {
-				team1.Add (new Cycler (){ Id = i, Name = "Renner " + i, Score = i*100, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" });
-			}
-
-			return team1;
-		}
-
 		public static List<Cycler> MyTeam() {
 
 			var myTeam = new List<Cycler> ();

@@ -42,6 +42,9 @@ namespace CyclingManager
 		UIKit.NSLayoutConstraint TeamOwnerHolderHeightConstraint { get; set; }
 
 		[Outlet]
+		UIKit.UILabel TeamRankingGraphCurrentCompetitionNameLabel { get; set; }
+
+		[Outlet]
 		UIKit.UIView TeamRankingGraphHolder { get; set; }
 
 		[Outlet]
@@ -63,6 +66,16 @@ namespace CyclingManager
 			if (HeaderHeightConstraint != null) {
 				HeaderHeightConstraint.Dispose ();
 				HeaderHeightConstraint = null;
+			}
+
+			if (OwnerImageView != null) {
+				OwnerImageView.Dispose ();
+				OwnerImageView = null;
+			}
+
+			if (OwnerNameLabel != null) {
+				OwnerNameLabel.Dispose ();
+				OwnerNameLabel = null;
 			}
 
 			if (RankingButton != null) {
@@ -100,19 +113,14 @@ namespace CyclingManager
 				TeamRankingGraphHolder = null;
 			}
 
+			if (TeamRankingGraphCurrentCompetitionNameLabel != null) {
+				TeamRankingGraphCurrentCompetitionNameLabel.Dispose ();
+				TeamRankingGraphCurrentCompetitionNameLabel = null;
+			}
+
 			if (TeamRankingGraphHolderHeightConstraint != null) {
 				TeamRankingGraphHolderHeightConstraint.Dispose ();
 				TeamRankingGraphHolderHeightConstraint = null;
-			}
-
-			if (OwnerImageView != null) {
-				OwnerImageView.Dispose ();
-				OwnerImageView = null;
-			}
-
-			if (OwnerNameLabel != null) {
-				OwnerNameLabel.Dispose ();
-				OwnerNameLabel = null;
 			}
 		}
 	}
