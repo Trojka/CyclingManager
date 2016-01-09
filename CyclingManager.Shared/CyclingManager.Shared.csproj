@@ -54,5 +54,6 @@
     <EmbeddedResource Include="Resources\treckfactoryracing.png" />
     <EmbeddedResource Include="Resources\user82.png" />
     <EmbeddedResource Include="Resources\bicycles4.png" />
+    <EmbeddedResource Include="Resources\flag_france.png" />
   </ItemGroup>
 </Project>

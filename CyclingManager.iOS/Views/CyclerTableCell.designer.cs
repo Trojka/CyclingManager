@@ -15,6 +15,9 @@ namespace CyclingManager
 		UIKit.NSLayoutConstraint bottomConstraint { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView CountryFlagImageView { get; set; }
+
+		[Outlet]
 		UIKit.UILabel CyclerNameLabel { get; set; }
 
 		[Outlet]
@@ -41,6 +44,16 @@ namespace CyclingManager
 				CyclerNameLabel = null;
 			}
 
+			if (CyclerScoreLabel != null) {
+				CyclerScoreLabel.Dispose ();
+				CyclerScoreLabel = null;
+			}
+
+			if (CountryFlagImageView != null) {
+				CountryFlagImageView.Dispose ();
+				CountryFlagImageView = null;
+			}
+
 			if (leadingConstraint != null) {
 				leadingConstraint.Dispose ();
 				leadingConstraint = null;
@@ -54,11 +67,6 @@ namespace CyclingManager
 			if (trailingConstraint != null) {
 				trailingConstraint.Dispose ();
 				trailingConstraint = null;
-			}
-
-			if (CyclerScoreLabel != null) {
-				CyclerScoreLabel.Dispose ();
-				CyclerScoreLabel = null;
 			}
 		}
 	}

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CyclingManager.Shared.DomainModel;
 using CoreAnimation;
+using CyclingManager.Shared;
 
 namespace CyclingManager
 {
@@ -18,6 +19,8 @@ namespace CyclingManager
 		const int TeamOwnerHolderHeight = 100;
 		const int TeamRankingGraphHolderHeight = 150;
 
+		const double ExpandCollapseAnimationDuration = 1;
+
 		ScoreView scoreView;
 
 		bool RankingDetailIsOpen { get; set;} = false;
@@ -28,11 +31,6 @@ namespace CyclingManager
 
 		public TeamDetailViewController (IntPtr handle) : base (handle)
 		{
-		}
-
-		public UIImage TeamImage {
-			get;
-			set;
 		}
 
 		public Team Team {
@@ -63,21 +61,24 @@ namespace CyclingManager
 
 			var newContentOffset = new CGPoint(0, TeamCyclersTable.ContentOffset.Y - HeaderCollapseDelta);
 
-			UIView.Animate(1, () => {
-					TeamCyclersTable.ContentInset = new UIEdgeInsets (HeaderHeightCollapsed + TeamRankingGraphHolderHeight, 0, 0, 0);
-					TeamCyclersTable.ContentOffset = newContentOffset;
-					TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeightCollapsed + TeamRankingGraphHolderHeight, 0, 0, 0);
+			UIView.Animate(ExpandCollapseAnimationDuration, () => {
+				TeamCyclersTable.ContentInset = new UIEdgeInsets (HeaderHeightCollapsed + TeamRankingGraphHolderHeight, 0, 0, 0);
+				TeamCyclersTable.ContentOffset = newContentOffset;
+				TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeightCollapsed + TeamRankingGraphHolderHeight, 0, 0, 0);
 
-					this.View.LayoutIfNeeded();
-				},
-				() => {
-					scoreView = new ScoreView();
-					scoreView.Frame = new CGRect(new CGPoint(0,0), TeamRankingGraphHolder.Frame.Size);
-					TeamRankingGraphHolder.AddSubview(scoreView);
+				OwnerNameLabel.Alpha = 0;
+				OwnerImageView.Alpha = 0;
 
-					scoreView.Configure();
-					scoreView.ShowData();
-				});
+				this.View.LayoutIfNeeded();
+			},
+			() => {
+				scoreView = new ScoreView();
+				scoreView.Frame = new CGRect(new CGPoint(0,0), TeamRankingGraphHolder.Frame.Size);
+				TeamRankingGraphHolder.AddSubview(scoreView);
+
+				scoreView.Configure();
+				scoreView.ShowData();
+			});
 		}
 
 		void CloseRankingDetail ()
@@ -92,17 +93,20 @@ namespace CyclingManager
 
 			var newContentOffset = new CGPoint(0, TeamCyclersTable.ContentOffset.Y + HeaderCollapseDelta);
 
-			UIView.Animate(1, () => {
-					TeamCyclersTable.ContentInset = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
-					TeamCyclersTable.ContentOffset = newContentOffset;
-					TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
+			UIView.Animate(ExpandCollapseAnimationDuration, () => {
+				TeamCyclersTable.ContentInset = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
+				TeamCyclersTable.ContentOffset = newContentOffset;
+				TeamCyclersTable.ScrollIndicatorInsets = new UIEdgeInsets (HeaderHeight + TeamOwnerHolderHeight, 0, 0, 0);
 
-					this.View.LayoutIfNeeded();
-				},
-				() => {
-					scoreView.RemoveFromSuperview();
-					scoreView = null;
-				});
+				OwnerNameLabel.Alpha = 1;
+				OwnerImageView.Alpha = 1;
+
+				this.View.LayoutIfNeeded();
+			},
+			() => {
+				scoreView.RemoveFromSuperview();
+				scoreView = null;
+			});
 		}
 
 		partial void CompareTeam (Foundation.NSObject sender)
@@ -192,6 +196,9 @@ namespace CyclingManager
 		{
 			var cell = tableView.DequeueReusableCell("CyclerCell") as CyclerTableCell;
 			cell.CyclerName = team [(int)indexPath.Item].Name;
+			cell.CyclerScore = string.Format("Score: {0}", team [(int)indexPath.Item].Score);
+			NSData flagImageData = NSData.FromArray (DataSource.GetResource(team [(int)indexPath.Item].CountryFlagUrl));
+			cell.CountryFlagImage = UIImage.LoadFromData (flagImageData, 1);
 
 			if(team[(int)indexPath.Item].Origin == TeamOrigin.Common)
 			{
@@ -260,8 +267,9 @@ namespace CyclingManager
 
 			this.View.LayoutIfNeeded();
 
-			TeamImageView.Image = TeamImage;
-			OwnerNameLabel.Text = Team.OwnerName;
+
+			NSData teamImageData = NSData.FromArray(this.Team.TeamImageData);
+			TeamImageView.Image = UIImage.LoadFromData (teamImageData, 1);
 
 			CAGradientLayer transparencyLayer = new CAGradientLayer ();
 			transparencyLayer.Frame = TeamImageView.Frame;
@@ -277,6 +285,11 @@ namespace CyclingManager
 			FollowButton.Layer.CornerRadius = FollowButton.Frame.Height/2;
 			FollowButton.Layer.BorderWidth = 1;
 			FollowButton.Layer.BorderColor = FollowButton.TitleColor(UIControlState.Normal).CGColor;
+
+			OwnerNameLabel.Text = Team.OwnerName;
+			OwnerImageView.Layer.CornerRadius = 5;
+			NSData ownerImageData = NSData.FromArray (DataSource.GetResource(this.Team.OwnerAvatarUrl));
+			OwnerImageView.Image = UIImage.LoadFromData (ownerImageData, 1);
 
 			TeamCyclersTable.WeakDelegate = this;
 			TeamCyclersTable.WeakDataSource = this;

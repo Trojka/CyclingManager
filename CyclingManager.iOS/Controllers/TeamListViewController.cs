@@ -50,10 +50,11 @@ namespace CyclingManager
 		{
 			var cell = collectionView.DequeueReusableCell("TeamOverviewCell", indexPath) as TeamOverviewCell;
 
-			cell.TeamImageHolder.Layer.CornerRadius = 35;
+			//cell.TeamImageHolder.Layer.CornerRadius = 35;
+			cell.TeamImageHolder.Layer.CornerRadius = 5;
 			cell.TeamImageHolder.ClipsToBounds = true;
 
-			NSData data = NSData.FromArray (sortedTeams[(int)indexPath.Item].ImageData);
+			NSData data = NSData.FromArray (sortedTeams[(int)indexPath.Item].TeamImageData);
 			cell.TeamImage = UIImage.LoadFromData (data, 1);
 
 			cell.TeamName = sortedTeams [(int)indexPath.Item].Name;
@@ -70,8 +71,8 @@ namespace CyclingManager
 				if (selectedIndexPath == null)
 					return;
 				
-				NSData data = NSData.FromArray (sortedTeams[(int)selectedIndexPath.Item].ImageData);
-				targetController.TeamImage = UIImage.LoadFromData (data, 1);
+//				NSData data = NSData.FromArray (sortedTeams[(int)selectedIndexPath.Item].ImageData);
+//				targetController.TeamImage = UIImage.LoadFromData (data, 1);
 
 				targetController.Team = sortedTeams [(int)selectedIndexPath.Item];
 			}
