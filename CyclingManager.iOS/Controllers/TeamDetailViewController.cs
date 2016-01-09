@@ -20,6 +20,7 @@ namespace CyclingManager
 		const int TeamRankingGraphHolderHeight = 150;
 
 		const double ExpandCollapseAnimationDuration = 1;
+		const double CompareAnimationDuration = 1;
 
 		ScoreView scoreView;
 
@@ -150,7 +151,7 @@ namespace CyclingManager
 				Cyclers.ForEach(t => t.Origin = TeamOrigin.Undetermined);
 
 
-				UIView.Animate(1, () => {
+				UIView.Animate(CompareAnimationDuration, () => {
 					this.View.LayoutIfNeeded();
 				}, () => {
 					TeamCyclersTable.DeleteRows(removeIndexPaths.ToArray(), UITableViewRowAnimation.None);
@@ -182,7 +183,7 @@ namespace CyclingManager
 					}
 				}
 
-				UIView.Animate(1, () => {
+				UIView.Animate(CompareAnimationDuration, () => {
 					this.View.LayoutIfNeeded();
 				});
 
