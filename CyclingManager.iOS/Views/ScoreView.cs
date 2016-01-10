@@ -15,7 +15,7 @@ namespace CyclingManager
 	[Register("ScoreView"), DesignTimeVisible(true)]
 	public class ScoreView : UIScrollView
 	{
-		//private List<int> graphPointList = new List<int>();
+		private CGColor graphColor = UIColor.Black.CGColor;
 
 		private nfloat minimalSpacing = 20.0f;
 
@@ -38,9 +38,6 @@ namespace CyclingManager
 			Results = results;
 
 			this.BackgroundColor = UIColor.Clear;
-			//this.graphPointList.AddRange (new int[]{ 10, 20, 5, 25, 15, 20, 30, 20, 5, 25, 15, 20, 30, 20, 5, 25, 15, 20, 30, 20, 5, 25, 15, 20, 30 });
-			//Configure ();
-			//ShowData ();
 		}
 
 		private List<CompetitionResult> Results {
@@ -48,12 +45,27 @@ namespace CyclingManager
 			set;
 		}
 
+		private nfloat Offset {
+			get;
+			set;
+		}
+
+		public nfloat GetCompetitionOffsetClosestTo(nfloat targetOffset) {
+			int index = (int)((targetOffset - (this.Frame.Width / 2)) / Offset);
+			return (this.Frame.Width / 2) + index * Offset;
+		}
+
+		public CompetitionResult GetCompetitionAtCurrentOffset (){
+			int index = (int)(this.ContentOffset.X / Offset);
+			return Results [index];
+		}
+
 		public void Configure() 
 		{
-			nfloat offset = (nfloat)Math.Max(minimalSpacing, this.Frame.Width / Results.Count / 2);
-			nfloat startXPos = (this.Frame.Width / 2);
+			Offset = (nfloat)Math.Max(minimalSpacing, this.Frame.Width / Results.Count / 2);
+			nfloat startXPos = (this.Frame.Width / 2) + (Offset * (Results.Count-1));
 
-			CGSize graphSize = new CGSize (minimalSpacing * Results.Count, this.Frame.Height);
+			CGSize graphSize = new CGSize (this.Frame.Width + (Offset * (Results.Count-1)), this.Frame.Height);
 			this.ContentSize = graphSize;
 
 			int maxScore = Results.Max (r => r.Score);
@@ -75,15 +87,17 @@ namespace CyclingManager
 				var pointLayer = new CAShapeLayer ();
 
 				pointLayer.Path = pointStartPath;
-				pointLayer.StrokeColor = UIColor.Yellow.CGColor;
-				pointLayer.FillColor = UIColor.Yellow.CGColor;
+				pointLayer.StrokeColor = graphColor;
+				pointLayer.FillColor = graphColor;
 
 				pointLayerList.Add (pointLayer);
 
 				this.Layer.AddSublayer (pointLayer);
 
-				startXPos -= offset;
+				startXPos -= Offset;
 			}
+
+			this.ContentOffset = new CGPoint ((Offset * (Results.Count - 1)), 0);
 		}
 
 
@@ -102,6 +116,7 @@ namespace CyclingManager
 				index++;
 			}
 		}
+
 	}
 }
 

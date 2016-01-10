@@ -84,11 +84,16 @@ namespace CyclingManager
 			},
 				() => {
 					scoreView = new ScoreView (Results);
+					scoreView.Bounces = false;
 					scoreView.Frame = new CGRect (new CGPoint (0, 0), TeamRankingGraphHolder.Frame.Size);
+					scoreView.WeakDelegate = this;
 					TeamRankingGraphHolder.AddSubview (scoreView);
 
 					scoreView.Configure ();
 					scoreView.ShowData ();
+					var competition = scoreView.GetCompetitionAtCurrentOffset ();
+					TeamRankingGraphCurrentCompetitionNameLabel.Text = competition.Name;
+
 				});
 		}
 
@@ -116,6 +121,7 @@ namespace CyclingManager
 			},
 				() => {
 					scoreView.RemoveFromSuperview ();
+					scoreView.WeakDelegate = null;
 					scoreView = null;
 				});
 		}
@@ -199,6 +205,23 @@ namespace CyclingManager
 				TeamCyclersTable.InsertRows(addIndexPaths.ToArray(), UITableViewRowAnimation.None);
 			}
 		}
+
+		#region implementation of UIScrollViewDelegate
+
+		[Export ("scrollViewWillEndDragging:withVelocity:targetContentOffset:")]
+		public void WillEndDragging(UIScrollView scrollView, CGPoint velocity, ref CGPoint targetContentOffset)
+		{
+			targetContentOffset = new CGPoint ((scrollView as ScoreView).GetCompetitionOffsetClosestTo(targetContentOffset.X), 0);
+		}
+
+		[Export ("scrollViewDidEndDecelerating:")]
+		public void DidEndDecelerating(UIScrollView scrollView)
+		{
+			var competition = (scrollView as ScoreView).GetCompetitionAtCurrentOffset ();
+			TeamRankingGraphCurrentCompetitionNameLabel.Text = competition.Name;
+		}
+
+		#endregion
 
 		#region implemented abstract members of UITableViewDataSource
 
