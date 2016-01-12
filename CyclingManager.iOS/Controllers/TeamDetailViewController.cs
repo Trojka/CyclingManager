@@ -208,15 +208,47 @@ namespace CyclingManager
 
 		#region implementation of UIScrollViewDelegate
 
+		[Export ("scrollViewWillBeginDragging:")]
+		public void WillBeginDragging(UIScrollView scrollView)
+		{
+			if (scrollView != scoreView)
+				return;
+			
+			TeamRankingGraphCurrentCompetitionNameLabel.Text = "";
+		}
+
 		[Export ("scrollViewWillEndDragging:withVelocity:targetContentOffset:")]
 		public void WillEndDragging(UIScrollView scrollView, CGPoint velocity, ref CGPoint targetContentOffset)
 		{
+			if (scrollView != scoreView)
+				return;
+
+			// if the velocity is 0, then there will be no deceleration: fill the text now
+			if (velocity.X == 0) {
+				var competition = (scrollView as ScoreView).GetCompetitionAtCurrentOffset ();
+				TeamRankingGraphCurrentCompetitionNameLabel.Text = competition.Name;
+				return;
+			}
+
 			targetContentOffset = new CGPoint ((scrollView as ScoreView).GetCompetitionOffsetClosestTo(targetContentOffset.X), 0);
 		}
 
 		[Export ("scrollViewDidEndDecelerating:")]
 		public void DidEndDecelerating(UIScrollView scrollView)
 		{
+			if (scrollView != scoreView)
+				return;
+
+			var competition = (scrollView as ScoreView).GetCompetitionAtCurrentOffset ();
+			TeamRankingGraphCurrentCompetitionNameLabel.Text = competition.Name;
+		}
+
+		[Export ("scrollViewDidScroll:")]
+		public void DidScroll(UIScrollView scrollView)
+		{
+			if (scrollView != scoreView)
+				return;
+
 			var competition = (scrollView as ScoreView).GetCompetitionAtCurrentOffset ();
 			TeamRankingGraphCurrentCompetitionNameLabel.Text = competition.Name;
 		}
@@ -326,6 +358,8 @@ namespace CyclingManager
 			OwnerImageView.Layer.CornerRadius = 5;
 			NSData ownerImageData = NSData.FromArray (DataSource.GetResource(this.Team.OwnerAvatarUrl));
 			OwnerImageView.Image = UIImage.LoadFromData (ownerImageData, 1);
+
+			TeamRankingGraphCurrentCompetitionNameLabel.Text = "";
 
 			TeamCyclersTable.WeakDelegate = this;
 			TeamCyclersTable.WeakDataSource = this;

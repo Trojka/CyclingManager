@@ -446,7 +446,6 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9a-G9-VOl">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="16"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Competition Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJE-vX-oT1">
                                         <rect key="frame" x="0.0" y="24" width="600" height="21"/>
@@ -458,7 +457,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="X9a-G9-VOl" firstAttribute="leading" secondItem="JI7-ii-Xya" secondAttribute="leading" id="03M-iM-FST"/>
                                     <constraint firstAttribute="height" constant="100" id="Agn-wu-YFb"/>

@@ -82,9 +82,9 @@ namespace CyclingManager.Shared
 		public static List<CompetitionResult> GetTeamResults(int teamId)
 		{
 			List<CompetitionResult> results = new CompetitionResult[]{
-				new CompetitionResult(){ Name = "Omloop Het Nieuwblad", ExecutionDate = new DateTime(2016, 1, 1), Score = 10 },
-				new CompetitionResult(){ Name = "Gent-Wevelgem", ExecutionDate = new DateTime(2016, 1, 2), Score = 13 },
-				new CompetitionResult(){ Name = "Ronde van Vlaanderen", ExecutionDate = new DateTime(2016, 1, 3), Score = 15 }
+				new CompetitionResult(){ Name = "Omloop Het Nieuwblad", ExecutionDate = new DateTime(2016, 1, 1), Score = 110 },
+				new CompetitionResult(){ Name = "Gent-Wevelgem", ExecutionDate = new DateTime(2016, 1, 2), Score = 300 },
+				new CompetitionResult(){ Name = "Ronde van Vlaanderen", ExecutionDate = new DateTime(2016, 1, 3), Score = 9999 }
 			}.ToList();
 
 			return results;
