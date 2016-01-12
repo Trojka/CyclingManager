@@ -116,6 +116,9 @@
       <DependentUpon>CompetitionListViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Views\CompetitionOverviewCell.designer.cs">
+      <DependentUpon>CompetitionOverviewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

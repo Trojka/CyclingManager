@@ -25,8 +25,10 @@ namespace CyclingManager
 		[Export ("collectionView:cellForItemAtIndexPath:")]
 		public UICollectionViewCell GetCell (UICollectionView collectionView, NSIndexPath indexPath)
 		{
-			var cell = competitionCollectionView.DequeueReusableCell("CompetitionOverviewCell", indexPath) as UICollectionViewCell;
+			var cell = competitionCollectionView.DequeueReusableCell("CompetitionOverviewCell", indexPath) as CompetitionOverviewCell;
 			cell.ContentView.BackgroundColor = competitions[(int)indexPath.Item].CompetitionColor.ToUIColor();
+
+			cell.CompetitionName = competitions [(int)indexPath.Item].Name;
 
 			return cell;
 		}

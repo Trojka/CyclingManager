@@ -9,10 +9,13 @@ namespace CyclingManager
 	[Register ("CompetitionLayout")]
 	public partial class CompetitionLayout : ExpandingItemLayout
 	{
+		public const double CompetitionStandardHeight = 100.0f;
+		public const double CompetitionFeaturedHeight = 200.0f;
+
 		public CompetitionLayout (IntPtr handle) : base (handle)
 		{
-			StandardHeight = 100.0f;
-			FeaturedHeight = 200.0f;
+			StandardHeight = (nfloat)CompetitionStandardHeight;
+			FeaturedHeight = (nfloat)CompetitionFeaturedHeight;
 			DragOffset = 100.0f;
 		}
 	}
