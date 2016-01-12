@@ -5,55 +5,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="EJr-rh-AIL">
-            <objects>
-                <tableViewController id="ggD-jX-ofE" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WN9-hd-qEp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="UKH-I2-Bwt">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UKH-I2-Bwt" id="YvE-NE-R3b">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ChQ-pr-1fL" kind="show" id="trE-QX-Uti"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ggD-jX-ofE" id="pRm-6h-jtk"/>
-                            <outlet property="delegate" destination="ggD-jX-ofE" id="WKO-5F-wZx"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="1Ig-e5-d4K"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jg2-4p-8E4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3871" y="1073"/>
-        </scene>
-        <!--Race-->
-        <scene sceneID="6SU-Gg-NU0">
-            <objects>
-                <navigationController id="v8o-tb-r1Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Race" id="vkw-w7-i6c"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKr-qL-PVo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ggD-jX-ofE" kind="relationship" relationship="rootViewController" id="vLh-f4-NUN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="27P-2y-wWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3020" y="1073"/>
-        </scene>
         <!--Item-->
         <scene sceneID="UWs-Ff-1TE">
             <objects>
@@ -107,13 +58,14 @@
                                 <collectionViewLayout key="collectionViewLayout" id="k0m-bk-HKM" customClass="CompetitionLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CompetitionOverviewCell" id="cZe-M5-kvq" customClass="CompetitionOverviewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="6" y="0.0" width="360" height="331"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="331"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <size key="customSize" width="360" height="331"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -133,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gl0-7o-9ge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3664" y="370"/>
+            <point key="canvasLocation" x="3859" y="369"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BSp-0L-KqG">
@@ -146,13 +98,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="CPO-8e-qY4" kind="relationship" relationship="viewControllers" id="opX-fl-0eu"/>
-                        <segue destination="v8o-tb-r1Q" kind="relationship" relationship="viewControllers" id="Cyg-0k-u7s"/>
                         <segue destination="38X-rW-u48" kind="relationship" relationship="viewControllers" id="j6H-oE-CLC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuK-ne-6hm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="369"/>
+            <point key="canvasLocation" x="2029" y="32"/>
         </scene>
         <!--Team List View Controller-->
         <scene sceneID="D46-zy-yjJ">
