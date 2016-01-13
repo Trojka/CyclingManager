@@ -9,11 +9,17 @@ using System.CodeDom.Compiler;
 
 namespace CyclingManager
 {
-	partial class CompetitionLayout
+	partial class CompetitionTableTeamCell
 	{
+		[Outlet]
+		UIKit.UILabel TeamNameLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (TeamNameLabel != null) {
+				TeamNameLabel.Dispose ();
+				TeamNameLabel = null;
+			}
 		}
 	}
 }

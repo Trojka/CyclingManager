@@ -105,9 +105,6 @@
     <Compile Include="Controllers\TeamListViewController.designer.cs">
       <DependentUpon>TeamListViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layouts\CompetitionLayout.designer.cs">
-      <DependentUpon>CompetitionLayout.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\TeamOverviewCell.designer.cs">
       <DependentUpon>TeamOverviewCell.cs</DependentUpon>
     </Compile>
@@ -118,6 +115,18 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Views\CompetitionOverviewCell.designer.cs">
       <DependentUpon>CompetitionOverviewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompetitionTableTeamCell.cs" />
+    <Compile Include="Views\CompetitionTableCyclerCell.cs" />
+    <Compile Include="Controllers\CompetitionDetailViewController.cs" />
+    <Compile Include="Controllers\CompetitionDetailViewController.designer.cs">
+      <DependentUpon>CompetitionDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompetitionTableTeamCell.designer.cs">
+      <DependentUpon>CompetitionTableTeamCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompetitionTableCyclerCell.designer.cs">
+      <DependentUpon>CompetitionTableCyclerCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
