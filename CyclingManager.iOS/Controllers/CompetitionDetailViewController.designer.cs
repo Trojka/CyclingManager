@@ -15,6 +15,9 @@ namespace CyclingManager
 		UIKit.UILabel CompetitionDateLabel { get; set; }
 
 		[Outlet]
+		UIKit.UITableView CompetitionDetailTable { get; set; }
+
+		[Outlet]
 		UIKit.UILabel CompetitionNameLabel { get; set; }
 
 		[Action ("CompetitionDetailTableSource:")]
@@ -30,6 +33,11 @@ namespace CyclingManager
 			if (CompetitionNameLabel != null) {
 				CompetitionNameLabel.Dispose ();
 				CompetitionNameLabel = null;
+			}
+
+			if (CompetitionDetailTable != null) {
+				CompetitionDetailTable.Dispose ();
+				CompetitionDetailTable = null;
 			}
 		}
 	}

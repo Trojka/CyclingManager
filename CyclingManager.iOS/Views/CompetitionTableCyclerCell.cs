@@ -10,6 +10,11 @@ namespace CyclingManager
 		public CompetitionTableCyclerCell (IntPtr handle) : base (handle)
 		{
 		}
+
+		public string CyclerName {
+			get { return CyclerNameLabel.Text; }
+			set { CyclerNameLabel.Text = value; }
+		}
 	}
 }
 

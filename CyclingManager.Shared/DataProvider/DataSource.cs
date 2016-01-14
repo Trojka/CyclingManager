@@ -89,6 +89,31 @@ namespace CyclingManager.Shared
 
 			return results;
 		}
+
+		public static List<Team> GetCompetitionTeamResults(int competitionId)
+		{
+			List<Team> results = new Team[] {
+				new Team (){ Id = 0, Name = "QuickStep", OwnerName = "Meneer Laminaat", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 2000, Results = GetTeamResults(0), TeamColor = Color.FromRGB(85, 0, 255), TeamImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
+				new Team (){ Id = 1, Name = "Lotto Soudal", OwnerName = "The Gambler", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 1000, TeamColor = Color.FromRGB(170, 0, 170), TeamImageData = GetResource("CyclingManager.Shared.Resources.lottosoudal.png")},
+				new Team (){ Id = 2, Name = "Team Sky", OwnerName = "Froomey", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 500, TeamColor = Color.FromRGB(85, 170, 85), TeamImageData = GetResource("CyclingManager.Shared.Resources.skyprocycling.png")},
+				new Team (){ Id = 3, Name = "Europcar", OwnerName = "Jacky Ickx", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 250, TeamColor = Color.FromRGB(0, 85, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.bicycles4.png")},
+				new Team (){ Id = 4, Name = "Katusha", OwnerName = "Vladimir Poetin", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 125, TeamColor = Color.FromRGB(255, 170, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.katusha.png")},
+				new Team (){ Id = 5, Name = "Trek Factory Racing", OwnerName = "Tja, wie eigenljk?", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 62, TeamColor = Color.FromRGB(255, 255, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.treckfactoryracing.png")}
+			}.ToList ();
+
+			return results;
+		}
+
+		public static List<Cycler> GetCompetitionCyclerResults(int competitionId)
+		{
+			var team1 = new List<Cycler> ();
+
+			for (int i = 0; i < 20; i++) {
+				team1.Add (new Cycler (){ Id = i, Name = "Renner " + i, Score = i*100, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" });
+			}
+
+			return team1;
+		}
 	}
 }
 
