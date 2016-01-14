@@ -40,7 +40,7 @@ namespace CyclingManager.Shared
 		}
 
 		static List<Team> teamList = new Team[] {
-			new Team (){ Id = 0, Name = "QuickStep", OwnerName = "Meneer Laminaat", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 2000, Results = GetTeamResults(0), TeamColor = Color.FromRGB(85, 0, 255), TeamImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
+			new Team (){ Id = 0, Name = "QuickStep", OwnerName = "Meneer Laminaat", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 2000, TeamColor = Color.FromRGB(85, 0, 255), TeamImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
 			new Team (){ Id = 1, Name = "Lotto Soudal", OwnerName = "The Gambler", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 1000, TeamColor = Color.FromRGB(170, 0, 170), TeamImageData = GetResource("CyclingManager.Shared.Resources.lottosoudal.png")},
 			new Team (){ Id = 2, Name = "Team Sky", OwnerName = "Froomey", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 500, TeamColor = Color.FromRGB(85, 170, 85), TeamImageData = GetResource("CyclingManager.Shared.Resources.skyprocycling.png")},
 			new Team (){ Id = 3, Name = "Europcar", OwnerName = "Jacky Ickx", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 250, TeamColor = Color.FromRGB(0, 85, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.bicycles4.png")},
@@ -51,6 +51,17 @@ namespace CyclingManager.Shared
 		public static List<Team> Teams()
 		{
 			return teamList;
+		}
+
+		public static List<Cycler> MyTeam() {
+
+			var myTeam = new List<Cycler> ();
+
+			myTeam.Add (new Cycler (){ Id = 2, Name = "Renner 2", Score = 100, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" });
+			myTeam.Add (new Cycler (){ Id = 3, Name = "Renner 3", Score = 200, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" });
+			myTeam.Add (new Cycler (){ Id = 4, Name = "Renner 4", Score = 300, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" });
+
+			return myTeam;
 		}
 
 		public static byte[] GetResource(string resourceName) {
@@ -93,7 +104,7 @@ namespace CyclingManager.Shared
 		public static List<Team> GetCompetitionTeamResults(int competitionId)
 		{
 			List<Team> results = new Team[] {
-				new Team (){ Id = 0, Name = "QuickStep", OwnerName = "Meneer Laminaat", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 2000, Results = GetTeamResults(0), TeamColor = Color.FromRGB(85, 0, 255), TeamImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
+				new Team (){ Id = 0, Name = "QuickStep", OwnerName = "Meneer Laminaat", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 2000, TeamColor = Color.FromRGB(85, 0, 255), TeamImageData = GetResource("CyclingManager.Shared.Resources.etixxquickstep.png")},
 				new Team (){ Id = 1, Name = "Lotto Soudal", OwnerName = "The Gambler", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 1000, TeamColor = Color.FromRGB(170, 0, 170), TeamImageData = GetResource("CyclingManager.Shared.Resources.lottosoudal.png")},
 				new Team (){ Id = 2, Name = "Team Sky", OwnerName = "Froomey", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 500, TeamColor = Color.FromRGB(85, 170, 85), TeamImageData = GetResource("CyclingManager.Shared.Resources.skyprocycling.png")},
 				new Team (){ Id = 3, Name = "Europcar", OwnerName = "Jacky Ickx", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 250, TeamColor = Color.FromRGB(0, 85, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.bicycles4.png")},

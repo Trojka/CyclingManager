@@ -168,7 +168,7 @@ namespace CyclingManager
 			else {
 				m_isInModeCompare = true;
 
-				var myTeam = Cycler.MyTeam();
+				var myTeam = DataSource.MyTeam();
 				Cyclers.ForEach(t => t.Origin = TeamOrigin.Theirs);
 				Cyclers.Where(t => myTeam.Any(mt => mt.Id == t.Id)).ToList().ForEach(t => t.Origin = TeamOrigin.Common);
 
