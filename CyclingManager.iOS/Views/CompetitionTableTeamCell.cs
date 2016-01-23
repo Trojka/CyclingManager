@@ -11,10 +11,21 @@ namespace CyclingManager
 		{
 		}
 
-		public string TeamName{
+		public UIImage TeamManagerImage {
+			get { return TeamManagerImageView.Image; }
+			set { TeamManagerImageView.Image = value; }
+		}
+
+		public String TeamName {
 			get { return TeamNameLabel.Text; }
 			set { TeamNameLabel.Text = value; }
 		}
+
+		public String TeamCompetitionScore {
+			get { return TeamCompetitionScoreLabel.Text; }
+			set { TeamCompetitionScoreLabel.Text = value; }
+		}
+
 	}
 }
 

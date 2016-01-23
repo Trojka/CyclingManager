@@ -33,7 +33,15 @@ namespace CyclingManager.Shared
 			var competitions = new List<Competition> ();
 
 			for (int i = 0; i < competitionColors.Count; i++) {
-				competitions.Add (new Competition (){ Id = i, Name = "Wedstrijd " + i, CompetitionColor = competitionColors[i]});
+				competitions.Add (new Competition (){ 
+					Id = i, 
+					Name = "Wedstrijd " + i, 
+					Date = (new DateTime(2016 + (i/12), (i%12)+1, 1)).AddMonths(-2), 
+					CompetitionColor = competitionColors[i],
+					Stage1 = new Cycler (){ Id = 2, Name = "Renner 20", Score = 100, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" },
+					Stage2 = new Cycler (){ Id = 2, Name = "Renner 30", Score = 200, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" },
+					Stage3 = new Cycler (){ Id = 2, Name = "Renner 40", Score = 300, CountryFlagUrl = "CyclingManager.Shared.Resources.flag_france.png" }
+				});
 			}
 
 			return competitions;

@@ -15,6 +15,16 @@ namespace CyclingManager
 			get { return CyclerNameLabel.Text; }
 			set { CyclerNameLabel.Text = value; }
 		}
+
+		public string CyclerScore {
+			get { return CyclerScoreLabel.Text; }
+			set { CyclerScoreLabel.Text = value; }
+		}
+
+		public UIImage CountryFlagImage {
+			get { return CountryFlagImageView.Image; }
+			set { CountryFlagImageView.Image = value; }
+		}
 	}
 }
 

@@ -93,6 +93,11 @@ namespace CyclingManager
 			}
 		}
 
+		public override UICollectionViewLayoutAttributes LayoutAttributesForItem (NSIndexPath indexPath)
+		{
+			return cache[(int)indexPath.Item];
+		}
+
 		public override UICollectionViewLayoutAttributes[] LayoutAttributesForElementsInRect (CoreGraphics.CGRect rect)
 		{
 			var layoutAttributes = new List<UICollectionViewLayoutAttributes> ();

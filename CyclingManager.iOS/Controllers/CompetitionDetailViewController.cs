@@ -25,6 +25,11 @@ namespace CyclingManager
 			tableDataSourceType = DetailTableDataSourceEnum.Cyclers;
 		}
 
+		public Competition Competition {
+			get;
+			set;
+		}
+
 		partial void CompetitionDetailTableSource (Foundation.NSObject sender)
 		{
 			if(!(sender is UISegmentedControl))
@@ -47,6 +52,23 @@ namespace CyclingManager
 			CompetitionDetailTable.ReloadData();
 		}
 
+		#region implemented members of UITableViewDelegate
+
+		[Export ("tableView:heightForRowAtIndexPath:")]
+		public float GetRowHeight (UITableView tableView, NSIndexPath indexPath)
+		{
+			switch (tableDataSourceType) {
+			case DetailTableDataSourceEnum.Cyclers:
+				return 43;
+			case DetailTableDataSourceEnum.Teams:
+				return 80;
+			}
+
+			return 0;
+		}
+
+		#endregion
+
 		#region implemented abstract members of UITableViewDataSource
 
 		[Export ("tableView:cellForRowAtIndexPath:")]
@@ -57,11 +79,18 @@ namespace CyclingManager
 			case DetailTableDataSourceEnum.Cyclers:
 				CompetitionTableCyclerCell cyclerCell = tableView.DequeueReusableCell ("CompetitionCyclerCell") as CompetitionTableCyclerCell;
 				cyclerCell.CyclerName = cyclerDataSource [(int)indexPath.Item].Name;
+				cyclerCell.CyclerScore = string.Format("Score: {0}", cyclerDataSource [(int)indexPath.Item].Score);
+				NSData flagImageData = NSData.FromArray (DataSource.GetResource(cyclerDataSource [(int)indexPath.Item].CountryFlagUrl));
+				cyclerCell.CountryFlagImage = UIImage.LoadFromData (flagImageData, 1);
+
 				cell = cyclerCell;
 				break;
 			case DetailTableDataSourceEnum.Teams:
 				CompetitionTableTeamCell teamCell = tableView.DequeueReusableCell ("CompetitionTeamCell") as CompetitionTableTeamCell;
 				teamCell.TeamName = teamDataSource [(int)indexPath.Item].Name;
+				NSData ownerImageData = NSData.FromArray (DataSource.GetResource(teamDataSource [(int)indexPath.Item].OwnerAvatarUrl));
+				teamCell.TeamManagerImage = UIImage.LoadFromData (ownerImageData, 1);
+				teamCell.TeamCompetitionScore = "100";
 				cell = teamCell;
 				break;
 			}
@@ -91,6 +120,9 @@ namespace CyclingManager
 
 			CompetitionDetailTable.WeakDelegate = this;
 			CompetitionDetailTable.WeakDataSource = this;
+
+			CompetitionNameLabel.Text = Competition.Name;
+			CompetitionDateLabel.Text = Competition.Date.ToString ("dd MMM yyyy");
 		}
 	}
 }

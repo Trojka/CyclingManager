@@ -12,13 +12,29 @@ namespace CyclingManager
 	partial class CompetitionTableCyclerCell
 	{
 		[Outlet]
+		UIKit.UIImageView CountryFlagImageView { get; set; }
+
+		[Outlet]
 		UIKit.UILabel CyclerNameLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel CyclerScoreLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (CountryFlagImageView != null) {
+				CountryFlagImageView.Dispose ();
+				CountryFlagImageView = null;
+			}
+
 			if (CyclerNameLabel != null) {
 				CyclerNameLabel.Dispose ();
 				CyclerNameLabel = null;
+			}
+
+			if (CyclerScoreLabel != null) {
+				CyclerScoreLabel.Dispose ();
+				CyclerScoreLabel = null;
 			}
 		}
 	}

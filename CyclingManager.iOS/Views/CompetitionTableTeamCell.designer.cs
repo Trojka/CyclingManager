@@ -12,6 +12,12 @@ namespace CyclingManager
 	partial class CompetitionTableTeamCell
 	{
 		[Outlet]
+		UIKit.UILabel TeamCompetitionScoreLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView TeamManagerImageView { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TeamNameLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -19,6 +25,16 @@ namespace CyclingManager
 			if (TeamNameLabel != null) {
 				TeamNameLabel.Dispose ();
 				TeamNameLabel = null;
+			}
+
+			if (TeamCompetitionScoreLabel != null) {
+				TeamCompetitionScoreLabel.Dispose ();
+				TeamCompetitionScoreLabel = null;
+			}
+
+			if (TeamManagerImageView != null) {
+				TeamManagerImageView.Dispose ();
+				TeamManagerImageView = null;
 			}
 		}
 	}
