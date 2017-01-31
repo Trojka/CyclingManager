@@ -51,21 +51,21 @@ Global
 		{747C6A49-E72B-4D8A-A261-B28E3B9CD2EA}.Release|iPhone.Build.0 = Release|Any CPU
 		{747C6A49-E72B-4D8A-A261-B28E3B9CD2EA}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{747C6A49-E72B-4D8A-A261-B28E3B9CD2EA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.AppStore|iPhone.ActiveCfg = Release|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.AppStore|iPhone.Build.0 = Release|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|iPhone.Build.0 = Release|Any CPU
 		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{F12B139E-0B0E-4841-8A31-1C557A53D574}.AppStore|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

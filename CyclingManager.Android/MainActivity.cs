@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using CyclingManager.Shared.DomainModel;
 using System.Linq;
 using Android.Views.Animations;
+using CyclingManager.Shared;
 
 namespace CyclingManager.Android
 {
@@ -30,7 +31,7 @@ namespace CyclingManager.Android
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.main);
 
-			var team = Cycler.Team1 ().Select (c => new CyclerViewModel (){ Id = id++, Name = c.Name }).ToList ();
+			var team = DataSource.MyTeam().Select (c => new CyclerViewModel (){ Id = id++, Name = c.Name }).ToList ();
 			m_team = new JavaList<CyclerViewModel> (team);
 			m_adapter = new AnimatableCellAdapter (this, Resource.Layout.cycler_layout, m_team);
 

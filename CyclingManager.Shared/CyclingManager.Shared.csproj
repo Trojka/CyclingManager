@@ -37,6 +37,7 @@
     <Compile Include="DomainModel\Competition.cs" />
     <Compile Include="Common\Color.cs" />
     <Compile Include="DomainModel\CompetitionResult.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -44,6 +45,7 @@
     <Folder Include="DataProvider\" />
     <Folder Include="Common\" />
     <Folder Include="Resources\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\etixxquickstep.png" />
@@ -55,5 +57,6 @@
     <EmbeddedResource Include="Resources\user82.png" />
     <EmbeddedResource Include="Resources\bicycles4.png" />
     <EmbeddedResource Include="Resources\flag_france.png" />
+    <EmbeddedResource Include="Resources\DataQueries.xml" />
   </ItemGroup>
 </Project>

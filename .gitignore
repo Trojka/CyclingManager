@@ -17,3 +17,5 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Pp]ackages/
+
+CyclingManager.Shared/Resources/DataQueries.xml

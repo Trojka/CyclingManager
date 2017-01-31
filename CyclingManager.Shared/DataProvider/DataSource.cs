@@ -58,6 +58,8 @@ namespace CyclingManager.Shared
 
 		public static List<Team> Teams()
 		{
+			Configuration config = new Configuration ();
+			string teamUrl = config ["get_teams"];
 			return teamList;
 		}
 
