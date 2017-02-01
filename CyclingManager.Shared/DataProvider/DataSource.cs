@@ -5,6 +5,8 @@ using CyclingManager.Shared.Common;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using System.Net;
+using System.Text;
 
 namespace CyclingManager.Shared
 {
@@ -28,7 +30,28 @@ namespace CyclingManager.Shared
 			Color.FromRGB(0, 170, 170)
 		});
 
-		public static List<Competition> Competitions()
+        public static List<Country> Countries() {
+            Configuration config = new Configuration();
+            string teamUrl = config["countries"];
+
+            var request = (HttpWebRequest)WebRequest.Create(teamUrl);
+            request.Method = "GET";
+            //request.ContentType = "text/xml; encoding='utf-8'";
+
+            var response = request.BeginGetResponse(new AsyncCallback(FinishWebRequest), request);
+
+            return new List<Country>();
+        }
+
+        private static void FinishWebRequest(IAsyncResult result) {
+            HttpWebResponse response = (result.AsyncState as HttpWebRequest).EndGetResponse(result) as HttpWebResponse;
+
+            using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+                string responseText = reader.ReadToEnd();
+            }
+        }
+
+        public static List<Competition> Competitions()
 		{
 			var competitions = new List<Competition> ();
 

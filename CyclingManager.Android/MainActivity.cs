@@ -31,6 +31,8 @@ namespace CyclingManager.Android
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.main);
 
+            var countries = DataSource.Countries();
+
 			var team = DataSource.MyTeam().Select (c => new CyclerViewModel (){ Id = id++, Name = c.Name }).ToList ();
 			m_team = new JavaList<CyclerViewModel> (team);
 			m_adapter = new AnimatableCellAdapter (this, Resource.Layout.cycler_layout, m_team);

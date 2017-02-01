@@ -27,8 +27,13 @@ namespace CyclingManager.Shared
 		{
 			if (!m_isLoaded)
 				LoadConfiguration ();
-			
-			return m_configDocument.Element("data_url").Element(key).Value;;
+
+            var urlElem = m_configDocument.Element("DataUrls");
+            var urlList = urlElem.Elements();
+            var requestedUrl = urlList.Where(u => u.Attribute("id").Value == key).FirstOrDefault();
+            var urlAttr = requestedUrl.Value;
+
+            return urlAttr;
 		}
 
 //		public void SetValue(string key, string value)
@@ -44,19 +49,9 @@ namespace CyclingManager.Shared
 			{
 				using (var reader = new StreamReader(s)) {
 					m_configDocument = XDocument.Parse(reader.ReadToEnd());
-					//return doc.Element("config").Element("google-api-key").Value;
 				}
 
 			}
-
-//			var type = this.GetType();
-//			var resource = type.Namespace + "." +
-//				Device.OnPlatform("iOS", "Droid", "WinPhone") + ".config.xml";
-//			using (var stream = type.Assembly.GetManifestResourceStream(resource))
-//			using (var reader = new StreamReader(stream)) {
-//				var doc = XDocument.Parse(reader.ReadToEnd());
-//				return doc.Element("config").Element("google-api-key").Value;
-//			}
 
 			m_isLoaded = true;
 		}
