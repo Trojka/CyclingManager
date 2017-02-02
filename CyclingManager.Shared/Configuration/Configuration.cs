@@ -8,10 +8,21 @@ namespace CyclingManager.Shared
 {
 	public class Configuration
 	{
-		static bool m_isLoaded = false;
+        string COUNTRIES = "countries";
+        string RIDERS = "riders";
+
+        static bool m_isLoaded = false;
 		static XDocument m_configDocument;
-		
-		public string this[string key]
+
+        public string CountryUrl {
+            get { return this[COUNTRIES]; }
+        }
+
+        public string RidersUrl {
+            get { return this[RIDERS]; }
+        }
+
+        public string this[string key]
 		{
 			get
 			{

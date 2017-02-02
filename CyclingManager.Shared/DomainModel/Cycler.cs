@@ -15,6 +15,8 @@ namespace CyclingManager.Shared.DomainModel
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
+        public int CountryId { get; set; }
+
 		public string CountryFlagUrl { get; set; }
 
 		public int Score { get; set; }

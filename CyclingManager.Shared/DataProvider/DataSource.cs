@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Linq;
 using System.Net;
 using System.Text;
+using CyclingManager.Shared.DataProvider.Parsers;
+using System.Threading.Tasks;
 
 namespace CyclingManager.Shared
 {
@@ -30,24 +32,27 @@ namespace CyclingManager.Shared
 			Color.FromRGB(0, 170, 170)
 		});
 
-        public static List<Country> Countries() {
+        public static Task<List<Country>> GetCountriesAsync() {
             Configuration config = new Configuration();
-            string teamUrl = config["countries"];
+            string teamUrl = config.CountryUrl;
 
-            var request = (HttpWebRequest)WebRequest.Create(teamUrl);
-            request.Method = "GET";
-            //request.ContentType = "text/xml; encoding='utf-8'";
+            return GetObjectListAsync<Country>(teamUrl, new CountryParser());
 
-            var response = request.BeginGetResponse(new AsyncCallback(FinishWebRequest), request);
-
-            return new List<Country>();
         }
 
-        private static void FinishWebRequest(IAsyncResult result) {
-            HttpWebResponse response = (result.AsyncState as HttpWebRequest).EndGetResponse(result) as HttpWebResponse;
+        private static async Task<List<T>> GetObjectListAsync<T>(string dataUrl, AbstractParser<T> parser) {
+            var request = (HttpWebRequest)WebRequest.Create(dataUrl);
+            request.Method = "GET";
+
+            var response = await Task.Factory.FromAsync((callback, stateObject) => request.BeginGetResponse(callback, request), request.EndGetResponse, null);
 
             using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
                 string responseText = reader.ReadToEnd();
+
+                var lines = responseText.Split(new string[] { System.Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                var objectList = parser.Parse(lines);
+                return objectList;
             }
         }
 

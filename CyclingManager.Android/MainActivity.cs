@@ -31,7 +31,7 @@ namespace CyclingManager.Android
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.main);
 
-            var countries = DataSource.Countries();
+            var countries = DataSource.GetCountriesAsync();
 
 			var team = DataSource.MyTeam().Select (c => new CyclerViewModel (){ Id = id++, Name = c.Name }).ToList ();
 			m_team = new JavaList<CyclerViewModel> (team);
