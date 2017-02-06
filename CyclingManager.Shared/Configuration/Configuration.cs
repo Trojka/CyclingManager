@@ -10,6 +10,7 @@ namespace CyclingManager.Shared
 	{
         string COUNTRIES = "countries";
         string RIDERS = "riders";
+        string TEAMS = "teams";
 
         static bool m_isLoaded = false;
 		static XDocument m_configDocument;
@@ -20,6 +21,10 @@ namespace CyclingManager.Shared
 
         public string RidersUrl {
             get { return this[RIDERS]; }
+        }
+
+        public string TeamUrl {
+            get { return this[TEAMS]; }
         }
 
         public string this[string key]

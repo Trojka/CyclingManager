@@ -12,8 +12,8 @@ namespace CyclingManager
 	public partial class TeamListViewController : UIViewController
 	{
 
-		List<Team> teams = DataSource.Teams();
-		List<Team> sortedTeams;
+        List<Team> teams = new List<Team>(); // = DataSource.Teams();
+		List<Team> sortedTeams = new List<Team>();
 
 		public TeamListViewController  (IntPtr handle) : base (handle)
 		{
@@ -78,13 +78,11 @@ namespace CyclingManager
 			}
 		}
 
-		public override void ViewDidLoad ()
+		public override async void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 
 			// Perform any additional setup after loading the view, typically from a nib.
-
-			sortedTeams = teams.OrderBy (t => t.Name).ToList();
 
 			this.NavigationController.NavigationBar.Translucent = true;
 			this.NavigationController.NavigationBar.SetBackgroundImage (new UIImage (), UIBarMetrics.Default);
@@ -95,6 +93,11 @@ namespace CyclingManager
 
 			teamCollectionView.DecelerationRate = UIScrollView.DecelerationRateFast;
 			teamCollectionView.WeakDataSource = this;
+
+            teams = await DataSource.GetTeamsAsync();
+
+            sortedTeams = teams.OrderBy(t => t.Name).ToList();
+            teamCollectionView.ReloadData();
 		}
 	}
 }

@@ -34,10 +34,17 @@ namespace CyclingManager.Shared
 
         public static Task<List<Country>> GetCountriesAsync() {
             Configuration config = new Configuration();
-            string teamUrl = config.CountryUrl;
+            string countryUrl = config.CountryUrl;
 
-            return GetObjectListAsync<Country>(teamUrl, new CountryParser());
+            return GetObjectListAsync<Country>(countryUrl, new CountryParser());
 
+        }
+
+        public static Task<List<Team>> GetTeamsAsync() {
+            Configuration config = new Configuration();
+            string teamUrl = config.TeamUrl;
+
+            return GetObjectListAsync<Team>(teamUrl, new TeamParser());
         }
 
         private static async Task<List<T>> GetObjectListAsync<T>(string dataUrl, AbstractParser<T> parser) {
@@ -83,13 +90,6 @@ namespace CyclingManager.Shared
 			new Team (){ Id = 4, Name = "Katusha", OwnerName = "Vladimir Poetin", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 125, TeamColor = Color.FromRGB(255, 170, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.katusha.png")},
 			new Team (){ Id = 5, Name = "Trek Factory Racing", OwnerName = "Tja, wie eigenljk?", OwnerAvatarUrl="CyclingManager.Shared.Resources.user82.png", Score = 62, TeamColor = Color.FromRGB(255, 255, 0), TeamImageData = GetResource("CyclingManager.Shared.Resources.treckfactoryracing.png")}
 		}.ToList();
-
-		public static List<Team> Teams()
-		{
-			Configuration config = new Configuration ();
-			string teamUrl = config ["get_teams"];
-			return teamList;
-		}
 
 		public static List<Cycler> MyTeam() {
 
